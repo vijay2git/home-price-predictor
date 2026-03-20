@@ -1,0 +1,297 @@
+===============================================================================
+HOME PRICE PREDICTOR - WINDOWS CMD COMMANDS
+===============================================================================
+
+📋 STEP-BY-STEP SETUP
+
+1. NAVIGATE TO PROJECT FOLDER
+   ─────────────────────────────
+   cd Downloads
+   cd home-price-predictor-enhanced
+
+
+2. FIRST TIME SETUP (Run once)
+   ────────────────────────────
+   
+   Option A - Automatic Setup:
+   ──────────────────────────
+   setup.bat
+   
+   (This will automatically install all dependencies)
+
+
+   Option B - Manual Setup:
+   ────────────────────────
+   
+   Install frontend dependencies:
+   npm install
+   
+   Install backend dependencies:
+   pip install -r requirements.txt
+
+
+3. OPEN IN VS CODE
+   ────────────────
+   code .
+   
+   (This will open VS Code in current directory)
+
+
+4. START THE SERVERS
+   ──────────────────
+   
+   You need TWO terminals running simultaneously!
+   
+   In VS Code:
+   - Press Ctrl + ` (backtick) to open Terminal
+   - Press Ctrl + Shift + 5 to split terminal vertically
+   
+   
+   TERMINAL 1 - Frontend Server:
+   ─────────────────────────────
+   npm run dev
+   
+   ✅ You should see: "VITE v5.0.0 ready in xxx ms"
+   ✅ Frontend URL: http://localhost:5173
+   
+   
+   TERMINAL 2 - Backend Server:
+   ────────────────────────────
+   python backend.py
+   
+   ✅ You should see: "Running on http://localhost:5000"
+
+
+5. OPEN IN BROWSER
+   ────────────────
+   http://localhost:5173
+   
+   (Copy and paste this into your browser address bar)
+
+
+===============================================================================
+🔧 USEFUL COMMANDS
+===============================================================================
+
+Clean Install:
+──────────────
+rd /s /q node_modules
+del package-lock.json
+npm install
+
+Update Backend Only:
+────────────────────
+pip install -r requirements.txt --upgrade
+
+Check Node Version:
+───────────────────
+node --version
+
+Check Python Version:
+─────────────────────
+python --version
+
+Check npm Version:
+──────────────────
+npm --version
+
+Kill Port 5173 (if stuck):
+──────────────────────────
+netstat -ano | findstr :5173
+taskkill /PID <PID> /F
+
+Kill Port 5000 (if stuck):
+──────────────────────────
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+Build for Production:
+─────────────────────
+npm run build
+
+Preview Production Build:
+─────────────────────────
+npm run preview
+
+
+===============================================================================
+🐛 TROUBLESHOOTING
+===============================================================================
+
+Problem: "npm: command not found"
+─────────────────────────────────
+Solution: Install Node.js from https://nodejs.org/
+          Restart command prompt after installation
+
+
+Problem: "python: command not found"
+──────────────────────────────────
+Solution: Install Python from https://www.python.org/
+          Make sure to check "Add Python to PATH" during installation
+          Restart command prompt after installation
+
+
+Problem: "Port 5173 already in use"
+─────────────────────────────────
+Solution: Kill the process using that port:
+          netstat -ano | findstr :5173
+          taskkill /PID <PID> /F
+          
+          Then restart: npm run dev
+
+
+Problem: "Port 5000 already in use"
+──────────────────────────────────
+Solution: Kill the process using that port:
+          netstat -ano | findstr :5000
+          taskkill /PID <PID> /F
+          
+          Then restart: python backend.py
+
+
+Problem: "CORS errors" or "Connection refused"
+────────────────────────────────────────────
+Solution: Make sure BOTH servers are running:
+          - npm run dev (Terminal 1)
+          - python backend.py (Terminal 2)
+          
+          Check that:
+          - Frontend is on http://localhost:5173
+          - Backend is on http://localhost:5000
+          
+          Restart both servers
+
+
+Problem: "Module not found" errors
+─────────────────────────────────
+Solution: Reinstall dependencies:
+          rd /s /q node_modules
+          del package-lock.json
+          npm install
+          
+          And Python:
+          pip install -r requirements.txt
+
+
+Problem: Blank page / Nothing loading
+────────────────────────────────────
+Solution: 1. Check browser console (F12)
+          2. Check if both servers are running
+          3. Refresh page (Ctrl + Shift + R)
+          4. Clear browser cache
+          5. Restart both servers
+
+
+===============================================================================
+📱 QUICK START BATCH FILES
+===============================================================================
+
+setup.bat
+─────────
+Runs the complete setup process automatically
+Just double-click this file!
+
+
+start.bat
+─────────
+Opens VS Code and shows quick start instructions
+Just double-click this file!
+
+
+===============================================================================
+🌐 ACCESSING THE APPLICATION
+===============================================================================
+
+Frontend (Web Interface):
+─────────────────────────
+http://localhost:5173
+
+Backend API:
+────────────
+http://localhost:5000
+
+Health Check:
+─────────────
+http://localhost:5000/health
+
+
+===============================================================================
+📊 QUICK REFERENCE TABLE
+===============================================================================
+
+┌─────────────────────────┬──────────────────────────────────┐
+│ Action                  │ Command                          │
+├─────────────────────────┼──────────────────────────────────┤
+│ Install all deps        │ npm install && pip install -r... │
+│ Start frontend          │ npm run dev                      │
+│ Start backend           │ python backend.py                │
+│ Build frontend          │ npm run build                    │
+│ Open VS Code            │ code .                           │
+│ Check npm version       │ npm --version                    │
+│ Check Python version    │ python --version                 │
+│ View all dependencies   │ npm list                         │
+│ Update packages         │ npm update                       │
+└─────────────────────────┴──────────────────────────────────┘
+
+
+===============================================================================
+✨ TIPS & TRICKS
+===============================================================================
+
+1. Keep both terminals visible:
+   - Use Ctrl + Shift + 5 to split VS Code terminal
+   - Position them side by side for easy monitoring
+
+2. Auto-reload on changes:
+   - Frontend: Automatically reloads (Vite hot reload)
+   - Backend: Manually restart Flask to see changes
+
+3. Check API responses:
+   - Open browser DevTools: F12
+   - Go to Network tab
+   - Make a prediction and see the API call
+
+4. Debug backend:
+   - Check Flask terminal for error messages
+   - Look for "500 Internal Server Error" responses
+
+5. Faster development:
+   - Use split terminals in VS Code
+   - Keep browser DevTools open (F12)
+   - Monitor both servers simultaneously
+
+
+===============================================================================
+🚀 SUCCESS INDICATORS
+===============================================================================
+
+✅ Frontend is working if you see:
+   - "VITE v5.0.0 ready in XXX ms"
+   - Page loads at http://localhost:5173
+   - No console errors (F12)
+
+✅ Backend is working if you see:
+   - "Running on http://localhost:5000"
+   - "WARNING: This is a development server"
+   - API responds to http://localhost:5000/health
+
+✅ Everything connected if:
+   - You can enter property details
+   - Click "Predict Price" button works
+   - Results display without errors
+
+
+===============================================================================
+📝 NOTES
+===============================================================================
+
+- Keep both servers running while developing
+- Don't close either terminal unexpectedly
+- If things break, restart both servers
+- Clear browser cache if you see old data (Ctrl + Shift + Del)
+- Backend must run before making predictions
+- Frontend can run without backend (but predictions won't work)
+
+===============================================================================
+
+For more help, check README.md file!
