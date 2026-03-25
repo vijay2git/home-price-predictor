@@ -150,6 +150,11 @@ def analytics():
     }
     return jsonify(analytics_data), 200
 
+@app.route('/api/test', methods=['GET'])
+def test():
+    """Simple test endpoint"""
+    return jsonify({'message': 'Hello from Vercel Python', 'status': 'ok'}), 200
+
 @app.route('/health', methods=['GET'])
 def health():
     """Health check endpoint"""
