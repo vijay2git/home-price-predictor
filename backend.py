@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import pickle
-import numpy as np
+import random
 from datetime import datetime
 import json
 import os
@@ -75,7 +75,7 @@ def predict():
         predicted_price = predictor.predict(features)
         
         # Calculate confidence and price range
-        confidence = 82 + np.random.randint(-10, 15)
+        confidence = 82 + random.randint(-10, 15)
         price_range = predicted_price * 0.05
         
         response = {

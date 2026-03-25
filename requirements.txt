@@ -1,5 +1,3 @@
 Flask
 Flask-CORS
-numpy
-scikit-learn
 python-dotenv
